@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Androidlab</string>
+    <string name="app_name" translatable="false">Androidlab</string>
+    <string name="cost_of_service">Cost of service</string>
+    <string name="how_was_the_service">How was the service?</string>
+    <string name="option_twenty_percent">Amazing(20%)</string>
+    <string name="option_eighteen_percent">Good(18%)</string>
+    <string name="option_fifteen_percent">OK(15%)</string>
+    <string name="round_up_tip">Round up tip?</string>
+    <string name="calculate">Calculate</string>
+    <string name="tip_result">Tip amount: %s</string>
 </resources>
