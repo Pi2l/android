@@ -14,18 +14,12 @@
   ~ limitations under the License.
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<set xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <!-- TODO (04) Add a fragment tag for the titleFragment in the LinearLayout
-                 Use @+id/titleFragment for the android:id
-                 Use com.example.android.navigation.TitleFragment for the android:name
-                 Use match_parent for the layout_height and layout_width -->
-        </LinearLayout>
-
-</layout>
+    <translate
+        android:duration="@android:integer/config_shortAnimTime"
+        android:fromXDelta="100%"
+        android:fromYDelta="0%"
+        android:toXDelta="0%"
+        android:toYDelta="0%" />
+</set>
