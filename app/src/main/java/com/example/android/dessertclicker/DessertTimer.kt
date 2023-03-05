@@ -19,6 +19,8 @@ package com.example.android.dessertclicker
 import android.os.Handler
 import timber.log.Timber
 import android.os.Looper
+import androidx.lifecycle.*
+
 /**
  * This is a class representing a timer that you can start or stop. The secondsCount outputs a count of
  * how many seconds since it started, every one second.
@@ -34,7 +36,11 @@ import android.os.Looper
  * https://developer.android.com/guide/components/processes-and-threads
  *
  */
-class DessertTimer {
+class DessertTimer(lifecycle: Lifecycle) : LifecycleEventObserver {
+
+    init {
+        lifecycle.addObserver(this)
+    }
 
     // The number of seconds counted since the timer started
     var secondsCount = 0
@@ -68,5 +74,13 @@ class DessertTimer {
         // Removes all pending posts of runnable from the handler's queue, effectively stopping the
         // timer
         handler.removeCallbacks(runnable)
+    }
+
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+
+        when (event) {
+            Lifecycle.Event.ON_START -> startTimer()
+            Lifecycle.Event.ON_STOP -> stopTimer()
+        }
     }
 }
