@@ -89,6 +89,12 @@ class GameFragment : Fragment() {
      * Increases the word count.
      */
     private fun onSkipWord() {
+        if (gameViewModel.nextWord()) {
+            setErrorTextField(false)
+            updateNextWordOnScreen()
+        } else {
+            showFinalScoreDialog()
+        }
     }
 
     /*
