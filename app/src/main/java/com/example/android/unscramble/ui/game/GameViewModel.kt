@@ -1,6 +1,8 @@
 package com.example.android.unscramble.ui.game
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
@@ -15,8 +17,8 @@ class GameViewModel : ViewModel() {
     private var usedWords : MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
 
-    private lateinit var _currentScrambledWord: String
-    val currentScrambledWord: String
+    private val _currentScrambledWord = MutableLiveData<String>()
+    val currentScrambledWord: LiveData<String>
         get() = _currentScrambledWord
 
     init {
@@ -40,7 +42,7 @@ class GameViewModel : ViewModel() {
         while ( String(tmpWord).equals(currentWord, false) ) {
             tmpWord.shuffle()
         }
-        _currentScrambledWord = String(tmpWord)
+        _currentScrambledWord.value = String(tmpWord)
         ++_currentWordCount
         usedWords.add(currentWord)
     }

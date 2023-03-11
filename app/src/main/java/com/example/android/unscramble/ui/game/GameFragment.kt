@@ -61,10 +61,12 @@ class GameFragment : Fragment() {
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
         // Update the UI
-        updateNextWordOnScreen()
         binding.score.text = getString(R.string.score, 0)
         binding.wordCount.text = getString(
                 R.string.word_count, 0, MAX_NO_OF_WORDS)
+        gameViewModel.currentScrambledWord.observe(viewLifecycleOwner, {
+            newWord -> binding.textViewUnscrambledWord.text = newWord
+        })
     }
 
     /*
@@ -75,10 +77,8 @@ class GameFragment : Fragment() {
         val userWord = binding.textInputEditText.text.toString()
 
         if (gameViewModel.isUserCorrect(userWord)){
-            if (gameViewModel.nextWord()) {
-                updateNextWordOnScreen()
-                setErrorTextField(false)
-            } else {
+            setErrorTextField(false)
+            if (!gameViewModel.nextWord()) {
                 showFinalScoreDialog()
             }
         } else {
@@ -93,7 +93,6 @@ class GameFragment : Fragment() {
     private fun onSkipWord() {
         if (gameViewModel.nextWord()) {
             setErrorTextField(false)
-            updateNextWordOnScreen()
         } else {
             showFinalScoreDialog()
         }
@@ -115,7 +114,6 @@ class GameFragment : Fragment() {
     private fun restartGame() {
         gameViewModel.reinitializeData()
         setErrorTextField(false)
-        updateNextWordOnScreen()
     }
 
     /*
@@ -138,13 +136,6 @@ class GameFragment : Fragment() {
         }
     }
 
-    /*
-     * Displays the next scrambled word on screen.
-     */
-    private fun updateNextWordOnScreen() {
-        binding.textViewUnscrambledWord.text = gameViewModel.currentScrambledWord
-    }
-
     override fun onDetach() {
         super.onDetach()
         Log.d("GameFragment", "GameFragment destroyed")
@@ -154,12 +145,12 @@ class GameFragment : Fragment() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.congratulations))
             .setMessage(getString(R.string.you_scored, gameViewModel.score))
-            .setNegativeButton(getString(R.string.exit), { _, _ ->
+            .setNegativeButton(getString(R.string.exit)) { _, _ ->
                 exitGame()
-            })
-            .setPositiveButton(getString(R.string.play_again), { _, _ ->
+            }
+            .setPositiveButton(getString(R.string.play_again)) { _, _ ->
                 restartGame()
-            })
+            }
             .setCancelable(false)
             .show()
     }
