@@ -14,8 +14,8 @@ class GameViewModel : ViewModel() {
 
     private var usedWords : MutableList<String> = mutableListOf()
     private lateinit var currentWord: String
-    private lateinit var _currentScrambledWord: String
 
+    private lateinit var _currentScrambledWord: String
     val currentScrambledWord: String
         get() = _currentScrambledWord
 
@@ -66,5 +66,12 @@ class GameViewModel : ViewModel() {
             return true
         }
         return false
+    }
+
+    fun reinitializeData() {
+        _score = 0
+        _currentWordCount = 0
+        usedWords.clear()
+        getNextWord()
     }
 }
