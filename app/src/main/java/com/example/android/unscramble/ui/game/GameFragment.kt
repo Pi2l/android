@@ -71,6 +71,12 @@ class GameFragment : Fragment() {
         gameViewModel.currentWordCount.observe(viewLifecycleOwner, {
                 newWordCount -> binding.wordCount.text = getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
         })
+
+        binding.gameViewModel = gameViewModel
+        binding.maxNoOfWords = MAX_NO_OF_WORDS
+        // Specify the fragment view as the lifecycle owner of the binding.
+        // This is used so that the binding can observe LiveData updates
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     /*
