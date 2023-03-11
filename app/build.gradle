@@ -24,7 +24,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "m.m.androidlab.unscramble"
+        applicationId "com.example.android.unscramble"
         minSdk 22
         targetSdk 33
         versionCode 1
