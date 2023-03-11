@@ -6,12 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
-    private var _score = 0
-    val score: Int
+    private val _score = MutableLiveData(0)
+    val score: LiveData<Int>
         get() = _score
 
-    private var _currentWordCount = 0
-    val currentWordCount: Int
+    private var _currentWordCount = MutableLiveData(0)
+    val currentWordCount: LiveData<Int>
         get() = _currentWordCount
 
     private var usedWords : MutableList<String> = mutableListOf()
@@ -43,7 +43,7 @@ class GameViewModel : ViewModel() {
             tmpWord.shuffle()
         }
         _currentScrambledWord.value = String(tmpWord)
-        ++_currentWordCount
+        _currentWordCount.value = _currentWordCount.value?.plus(1)
         usedWords.add(currentWord)
     }
 
@@ -52,14 +52,14 @@ class GameViewModel : ViewModel() {
     * Updates the next word.
     */
     fun nextWord(): Boolean {
-        return if (_currentWordCount < MAX_NO_OF_WORDS) {
+        return if (_currentWordCount.value!! < MAX_NO_OF_WORDS) {
             getNextWord()
             true
         } else false
     }
 
     private fun increaseScore() {
-        _score += SCORE_INCREASE
+        _score.value = _score.value?.plus(SCORE_INCREASE)
     }
 
     fun isUserCorrect(word: String): Boolean {
@@ -71,8 +71,8 @@ class GameViewModel : ViewModel() {
     }
 
     fun reinitializeData() {
-        _score = 0
-        _currentWordCount = 0
+        _score.value = 0
+        _currentWordCount.value = 0
         usedWords.clear()
         getNextWord()
     }
