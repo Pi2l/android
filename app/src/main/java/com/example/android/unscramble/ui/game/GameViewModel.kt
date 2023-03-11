@@ -39,7 +39,7 @@ class GameViewModel : ViewModel() {
         }
         _currentScrambledWord = String(tmpWord)
         ++currentWordCount
-        usedWords.add(_currentScrambledWord)
+        usedWords.add(currentWord)
     }
 
     /*
