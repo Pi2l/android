@@ -62,9 +62,6 @@ class GameFragment : Fragment() {
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
         // Update the UI
-        gameViewModel.currentScrambledWord.observe(viewLifecycleOwner, {
-            newWord -> binding.textViewUnscrambledWord.text = newWord
-        })
         gameViewModel.score.observe(viewLifecycleOwner, {
             newScore -> binding.score.text = getString(R.string.score, newScore)
         })
