@@ -36,7 +36,7 @@ class GameViewModel : ViewModel() {
             )
             spannable
         }
-    }gs
+    }
 
     init {
         Log.d("GameFragment", "GameViewModel created")
