@@ -62,12 +62,6 @@ class GameFragment : Fragment() {
         binding.submit.setOnClickListener { onSubmitWord() }
         binding.skip.setOnClickListener { onSkipWord() }
         // Update the UI
-        gameViewModel.score.observe(viewLifecycleOwner, {
-            newScore -> binding.score.text = getString(R.string.score, newScore)
-        })
-        gameViewModel.currentWordCount.observe(viewLifecycleOwner, {
-                newWordCount -> binding.wordCount.text = getString(R.string.word_count, newWordCount, MAX_NO_OF_WORDS)
-        })
 
         binding.gameViewModel = gameViewModel
         binding.maxNoOfWords = MAX_NO_OF_WORDS
