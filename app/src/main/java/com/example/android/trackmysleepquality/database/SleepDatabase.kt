@@ -16,32 +16,37 @@
 
 package com.example.android.trackmysleepquality.database
 
+import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 
-@Dao
-interface SleepDatabase {
+@Database(entities = [SleepNight::class], version = 1, exportSchema = false)
+abstract class SleepDatabase : RoomDatabase() {
 
-    @Insert
-    fun insert(entity: SleepNight)
+    abstract val sleepDatabaseDao: SleepDatabaseDao
 
-    @Update
-    fun update(entity: SleepNight)
+    companion object {
 
-    @Query("SELECT * FROM daily_sleep_quality_table WHERE id = :id")
-    fun get(id: Long): SleepNight?
+        @Volatile
+        private var INSTANCE: SleepDatabase? = null
 
-    @Query("DELETE FROM daily_sleep_quality_table")
-    fun deleteAll()
+        fun getInstance(context: Context): SleepDatabase {
+            synchronized(this) {
+                var instance = INSTANCE
 
-    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY id DESC LIMIT 1")
-    fun getTonight(): SleepNight?
+                if (instance == null) {
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        SleepDatabase::class.java,
+                        "sleep_history_database"
+                    ).fallbackToDestructiveMigration().build()
+                    INSTANCE = instance
+                }
 
-    @Query("SELECT * FROM daily_sleep_quality_table ORDER BY id DESC")
-    fun getAllNights(): LiveData<List<SleepNight>>
-
+                return instance
+            }
+        }
+    }
 }
+
