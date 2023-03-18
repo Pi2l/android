@@ -21,6 +21,7 @@ buildscript {
 //         supportlibVersion = '1.6.1'
 //         dataBindingCompilerVersion = gradleVersion // Always need to be the same.
 //         navigationVersion = '2.5.3'
+//         room_version = '2.2.5'
 //     }
 //     repositories {
 //         google()
