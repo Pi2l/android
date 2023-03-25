@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.database.SleepDatabase
 import com.example.android.trackmysleepquality.databinding.FragmentSleepTrackerBinding
+import com.example.android.trackmysleepquality.databinding.ListItemSleepNightBinding
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -53,8 +54,10 @@ class SleepTrackerFragment : Fragment() {
         val adapter = SleepNightAdapter()
 
         // Get a reference to the binding object and inflate the fragment views.
-        val binding: FragmentSleepTrackerBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_sleep_tracker, container, false)
+//        val binding: FragmentSleepTrackerBinding = DataBindingUtil.inflate(
+//                inflater, R.layout.fragment_sleep_tracker, container, false)
+        val binding = FragmentSleepTrackerBinding.inflate(
+            inflater, container, false)
 
         val application = requireNotNull(this.activity).application
 
