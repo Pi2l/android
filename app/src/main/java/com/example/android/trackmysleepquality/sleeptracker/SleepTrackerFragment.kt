@@ -54,10 +54,6 @@ class SleepTrackerFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val adapter = SleepNightAdapter(SleepNightListener { nightId ->
-            Toast.makeText(context, "${nightId}", Toast.LENGTH_SHORT).show()
-        })
-
         // Get a reference to the binding object and inflate the fragment views.
         val binding = FragmentSleepTrackerBinding.inflate(
             inflater, container, false)
@@ -76,6 +72,11 @@ class SleepTrackerFragment : Fragment() {
         // To use the View Model with data binding, you have to explicitly
         // give the binding object a reference to it.
         binding.sleepTrackerViewModel = sleepTrackerViewModel
+
+        val adapter = SleepNightAdapter(SleepNightListener { nightId ->
+            Toast.makeText(context, "${nightId}", Toast.LENGTH_SHORT).show()
+            sleepTrackerViewModel.onSleepNightClicked(nightId)
+        })
 
         sleepTrackerViewModel.nights.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -123,6 +124,13 @@ class SleepTrackerFragment : Fragment() {
 
         binding.sleepList.adapter = adapter
 
+        sleepTrackerViewModel.navigateToSleepDetail.observe(viewLifecycleOwner, Observer { night ->
+            night?.let {
+                this.findNavController()
+                    .navigate(SleepTrackerFragmentDirections.actionSleepTrackerFragmentToSleepDetailFragment(night))
+                sleepTrackerViewModel.onSleepDetailNavigated()
+            }
+        })
         binding.sleepList.layoutManager =
             GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
         return binding.root
