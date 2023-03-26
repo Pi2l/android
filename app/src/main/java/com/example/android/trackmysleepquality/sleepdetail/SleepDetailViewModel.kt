@@ -42,14 +42,10 @@ class SleepDetailViewModel(
      */
     val database = dataSource
 
-    private val night: LiveData<SleepNight>
+    private val night: LiveData<SleepNight> = database.getNightWithId(sleepNightKey)
 
     fun getNight() = night
 
-
-    init {
-        night=database.getNightWithId(sleepNightKey)
-    }
 
     /**
      * Variable that tells the fragment whether it should navigate to [SleepTrackerFragment].
