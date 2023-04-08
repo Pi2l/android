@@ -18,8 +18,10 @@
 package com.example.android.marsrealestate.overview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.FragmentOverviewBinding
@@ -49,6 +51,18 @@ class OverviewFragment : Fragment() {
 
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
+
+        viewModel.response.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Log.i("qwertt", "1: " + it.toString())
+            }
+        })
+
+        viewModel.response.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Log.i("qwertt", "2")
+            }
+        })
 
         setHasOptionsMenu(true)
         return binding.root
