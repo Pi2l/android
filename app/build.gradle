@@ -1,13 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "m.m.androidlab"
+        applicationId "com.example.android.marsrealestate"
         minSdk 22
         targetSdk 33
         versionCode 1
@@ -22,60 +25,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    buildFeatures {
+//        viewBinding true
+        dataBinding true
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-//     buildFeatures {
-    //     viewBinding = true
-    // }
 }
 
-dependencies {
+ dependencies {
+     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-}
+     // Core with Ktx
+     implementation "androidx.core:core-ktx:1.9.0"
 
-// dependencies {
-//     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-//     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-//     implementation "androidx.appcompat:appcompat:$supportlibVersion"
-//     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-//     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-//     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-//  // LiveData
-//     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-// // ViewModel
-//     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-//     implementation 'androidx.fragment:fragment-ktx:1.5.5'
-//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+     // Kotlin
+     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-//     // Room and Lifecycle dependencies
-//     implementation "androidx.room:room-runtime:$room_version"
-//     kapt "androidx.room:room-compiler:$room_version"
-//     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+     // Constraint Layout
+     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-//     // Kotlin Extensions and Coroutines support for Room
-//     implementation "androidx.room:room-ktx:$room_version"
+     // ViewModel
+     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+     implementation 'androidx.fragment:fragment-ktx:1.5.5'
 
-//     // Coroutines
-//     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-//     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-
-//     // Navigation
-// //    implementation "android.arch.navigation:navigation-fragment-ktx:$navigationVersionOther" //??? 
-// //    implementation "android.arch.navigation:navigation-ui-ktx:$navigationVersionOther"
-
-// }
+     // Navigation
+     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+ }
