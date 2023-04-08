@@ -34,7 +34,7 @@ import retrofit2.Response
 class OverviewViewModel : ViewModel() {
 
     // The internal MutableLiveData String that stores the most recent response
-    private val _response = MutableLiveData<String>("init")
+    private val _response = MutableLiveData<String>()
 
     // The external immutable LiveData for the response String
     val response: LiveData<String>

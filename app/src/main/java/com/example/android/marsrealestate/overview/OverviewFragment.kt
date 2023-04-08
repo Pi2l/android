@@ -52,18 +52,6 @@ class OverviewFragment : Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
-        viewModel.response.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                Log.i("qwertt", "1: " + it.toString())
-            }
-        })
-
-        viewModel.response.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                Log.i("qwertt", "2")
-            }
-        })
-
         setHasOptionsMenu(true)
         return binding.root
     }
