@@ -20,8 +20,8 @@ buildscript {
          dataBindingCompilerVersion = gradleVersion // Always need to be the same.
          navigationVersion = '2.5.3'
 
-         moshi = "1.13.0"
-         retrofit = "2.9.0"
+         moshiVersion = "1.13.0"
+         retrofitVersion = "2.9.0"
      }
      repositories {
          google()

@@ -29,6 +29,15 @@ android {
 //        viewBinding true
         dataBinding true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
 }
 
  dependencies {
@@ -50,4 +59,9 @@ android {
      // Navigation
      implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
      implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+     // Retrofit
+     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
+
  }
