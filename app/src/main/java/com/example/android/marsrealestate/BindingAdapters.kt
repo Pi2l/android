@@ -36,7 +36,7 @@ fun bindImage(imageView: ImageView, url: String?) {
         Glide.with(imageView.context)
             .load(imgUri)
             .apply( RequestOptions()
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .placeholder(R.drawable.loading_animation)
                 .error(R.drawable.ic_connection_error)
             )
