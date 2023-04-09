@@ -23,6 +23,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.FragmentOverviewBinding
 import com.example.android.marsrealestate.databinding.GridViewItemBinding
@@ -59,6 +62,14 @@ class OverviewFragment : Fragment() {
             viewModel.displayPropertyDetails(it)
         })
 
+        viewModel.navigateToMarsProperty.observe(this, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    OverviewFragmentDirections.actionShowDetail( it )
+                )
+                viewModel.displayPropertyDetailsComplicate()
+            }
+        })
         setHasOptionsMenu(true)
         return binding.root
     }

@@ -83,7 +83,7 @@ class OverviewViewModel : ViewModel() {
         _navigateToMarsProperty.value = marsProperty
     }
 
-    fun displayPropertyDetailsComplicate(marsProperty: MarsProperty) {
+    fun displayPropertyDetailsComplicate() {
         _navigateToMarsProperty.value = null
     }
 }
