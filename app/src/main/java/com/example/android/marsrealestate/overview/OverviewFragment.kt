@@ -62,7 +62,7 @@ class OverviewFragment : Fragment() {
             viewModel.displayPropertyDetails(it)
         })
 
-        viewModel.navigateToMarsProperty.observe(this, Observer {
+        viewModel.navigateToMarsProperty.observe(viewLifecycleOwner, Observer {
             if (null != it) {
                 this.findNavController().navigate(
                     OverviewFragmentDirections.actionShowDetail( it )
