@@ -10,85 +10,82 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "m.m.androidlab"
+        applicationId "com.example.android.devbyteviewer"
         minSdk 22
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildFeatures {
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-//     buildFeatures {
-    //     viewBinding = true
-    // }
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    // support libraries
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.6.0'
+
+    // Android KTX
+    implementation 'androidx.core:core-ktx:1.9.0'
+
+    // constraint layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // coroutines for getting off the UI thread
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+
+    // retrofit for networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+
+    // moshi for parsing the JSON format
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    // joda time library for dealing with time
+    implementation 'joda-time:joda-time:2.10'
+
+    // arch components
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
+    // logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // glide for images
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
 }
-
-// dependencies {
-//     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-//     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-//     implementation "androidx.appcompat:appcompat:$supportlibVersion"
-//     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-//     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-//     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-//  // LiveData
-//     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-// // ViewModel
-//     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-//     implementation 'androidx.fragment:fragment-ktx:1.5.5'
-//     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-//     // Room and Lifecycle dependencies
-//     implementation "androidx.room:room-runtime:$room_version"
-//     kapt "androidx.room:room-compiler:$room_version"
-//     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-
-//     // Kotlin Extensions and Coroutines support for Room
-//     implementation "androidx.room:room-ktx:$room_version"
-
-//     // Coroutines
-//     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-//     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-
-//     // Navigation
-// //    implementation "android.arch.navigation:navigation-fragment-ktx:$navigationVersionOther" //??? 
-// //    implementation "android.arch.navigation:navigation-ui-ktx:$navigationVersionOther"
-
-//    // Retrofit
-//    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-//    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-//    //     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
-//
-//    // Moshi
-//    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-//
-//    // Glide
-//    implementation "com.github.bumptech.glide:glide:$glideVersion"
-// }
