@@ -21,6 +21,7 @@ buildscript {
 //         supportlibVersion = '1.6.1'
 //         dataBindingCompilerVersion = gradleVersion // Always need to be the same.
 //         navigationVersion = '2.5.3'
+//         coroutineVersion = '1.6.0'
 //         room_version = '2.2.5'
 //         moshiVersion = '1.13.0'
 //         retrofitVersion = '2.9.0'
