@@ -15,13 +15,14 @@ buildscript {
 
  buildscript {
      ext {
-         kotlin_version = '1.6.10'
-         gradleVersion = '7.0.0'
-         navigationVersion = '2.5.3'
-         coroutineVersion = '1.6.0'
-         moshiVersion = '1.13.0'
-         retrofitVersion = '2.9.0'
-         glideVersion = '4.11.0'
+        kotlin_version = '1.6.10'
+        gradleVersion = '7.0.0'
+        navigationVersion = '2.5.3'
+        coroutineVersion = '1.6.0'
+        room_version = '2.2.5'
+        moshiVersion = '1.13.0'
+        retrofitVersion = '2.9.0'
+        glideVersion = '4.11.0'
      }
      repositories {
          google()
