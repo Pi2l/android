@@ -112,7 +112,17 @@ private fun BlurActions(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
-        Button(onGoClick) { Text(stringResource(R.string.go)) }
+        when(blurUiState) {
+            is BlurUiState.Default -> {
+                Button(onGoClick) { Text(stringResource(R.string.go)) }
+            }
+            is BlurUiState.Loading -> {
+                Button(onCancelClick) { Text(stringResource(R.string.cancel_work)) }
+            }
+            is BlurUiState.Complete -> {
+                Button(onGoClick) { Text(stringResource(R.string.go)) }
+            }
+        }
     }
 }
 
