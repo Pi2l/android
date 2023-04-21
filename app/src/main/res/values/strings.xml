@@ -14,37 +14,37 @@
     limitations under the License.
 -->
 <resources>
-    <string name="app_name">Blur-O-Matic</string>
-    <!-- Titles -->
-    <string name="blur_title">Select Blur Amount</string>
+    <string name="app_name">Water Me</string>
+    <string name="remind_me">Remind me to water %s in…</string>
+    <string name="five_seconds">5 seconds</string>
+    <string name="one_day">1 day</string>
+    <string name="one_week">1 week</string>
+    <string name="one_month">1 month</string>
+    <string name="one_minute">1 minute</string>
+    <string name="two_minute">2 minutes</string>
+    <string name="three_minute">3 minutes</string>
+    <string name="water">Water</string>
+    <string name="time_to_water">It\'s time to water your %s.</string>
 
-    <!-- Buttons -->
-    <string name="select_image">Select Image</string>
-    <string name="go">Go</string>
-    <string name="see_file">See File</string>
-
-    <!-- Content descriptions -->
-    <string name="description_image">The image to blur and save.</string>
-
-    <!-- Blur levels -->
-    <string name="blur_lv_1">A little blurred</string>
-    <string name="blur_lv_2">More blurred</string>
-    <string name="blur_lv_3">The most blurred</string>
-    <string name="cancel_work">Cancel Work</string>
-
-    <!-- Messages -->
-    <string name="set_permissions_in_settings">Go to Settings -> Apps and Notifications ->
-        WorkManager Demo -> App Permissions and grant access to Storage.</string>
-
-    <!-- Notification -->
-    <string name="blurring_image">Blurring image</string>
-    <string name="saving_image">Saving image</string>
-    <string name="cleaning_up_files">Cleaning up old temporary files</string>
-
-    <!-- Errors -->
-    <string name="invalid_input_uri">Invalid input uri</string>
-    <string name="error_applying_blur">Error applying blur</string>
-    <string name="writing_to_mediaStore_failed">Writing to MediaStore failed</string>
-    <string name="error_saving_image">Error saving image</string>
-    <string name="error_cleaning_file">Error cleaning up old temporary files</string>
+    <string name="lithop">Lithop</string>
+    <string name="carrot">Carrot</string>
+    <string name="peony">Peony</string>
+    <string name="pothos">Pothos</string>
+    <string name="fiddle_leaf_fig">Fiddle Leaf Fig</string>
+    <string name="strawberry">Strawberry</string>
+    <string name="daily">daily</string>
+    <string name="weekly">weekly</string>
+    <string name="monthly">monthly</string>
+    <string name="succulent">Succulent</string>
+    <string name="root">Root</string>
+    <string name="flower">Flower</string>
+    <string name="houseplant">Houseplant</string>
+    <string name="broadleaf_evergreen">Broadleaf evergreen</string>
+    <string name="fruit">Fruit</string>
+    <string name="stone_mimicking_succulent">Stone mimicking succulent</string>
+    <string name="hardy_root_vegetable">Hardy root vegetable</string>
+    <string name="spring_blooming_flower">Spring blooming flower</string>
+    <string name="indoor_vine">Indoor vine</string>
+    <string name="ornamental_fig">Ornamental fig</string>
+    <string name="delicious_multiple_fruit">Delicious multiple fruit</string>
 </resources>

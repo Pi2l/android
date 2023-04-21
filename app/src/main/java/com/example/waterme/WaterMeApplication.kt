@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic
+package com.example.waterme
 
 import android.app.Application
-import com.example.bluromatic.data.AppContainer
-import com.example.bluromatic.data.DefaultAppContainer
+import com.example.waterme.data.AppContainer
+import com.example.waterme.data.DefaultAppContainer
 
-class BluromaticApplication : Application() {
+class WaterMeApplication : Application() {
     /** AppContainer instance used by the rest of classes to obtain dependencies */
     lateinit var container: AppContainer
     override fun onCreate() {

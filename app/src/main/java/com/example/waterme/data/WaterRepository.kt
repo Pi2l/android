@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic.data
+package com.example.waterme.data
 
-import android.content.Context
+import com.example.waterme.model.Plant
+import java.util.concurrent.TimeUnit
 
-interface AppContainer {
-    val bluromaticRepository: BluromaticRepository
-}
-
-class DefaultAppContainer(context: Context) : AppContainer {
-    override val bluromaticRepository = WorkManagerBluromaticRepository(context)
+interface WaterRepository {
+    fun scheduleReminder(duration: Long, unit: TimeUnit, plantName: String)
+    val plants: List<Plant>
 }

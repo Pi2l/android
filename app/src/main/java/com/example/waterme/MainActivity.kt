@@ -14,13 +14,18 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic.data
+package com.example.waterme
 
-import androidx.work.WorkInfo
-import kotlinx.coroutines.flow.Flow
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.example.waterme.ui.WaterMeApp
 
-interface BluromaticRepository {
-    val outputWorkInfo: Flow<WorkInfo>
-    fun applyBlur(blurLevel: Int)
-    fun cancelWork()
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            WaterMeApp()
+        }
+    }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic.ui.theme
+package com.example.waterme.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -35,10 +35,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun BluromaticTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
+fun WaterMeAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

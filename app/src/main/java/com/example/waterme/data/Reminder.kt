@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic.ui.theme
+package com.example.waterme.data
 
-import androidx.compose.ui.graphics.Color
+import androidx.annotation.StringRes
+import java.util.concurrent.TimeUnit
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+/**
+ * Data class for representing the information required for reminder dialogs items.
+ * */
+data class Reminder(
+    @StringRes val durationRes: Int,
+    val duration: Long,
+    val unit: TimeUnit,
+    val plantName: String
+)

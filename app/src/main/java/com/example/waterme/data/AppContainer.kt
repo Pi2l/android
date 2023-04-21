@@ -14,23 +14,14 @@
  * limitations under the License.
  */
 
-package com.example.bluromatic.data
+package com.example.waterme.data
 
-import com.example.bluromatic.R
+import android.content.Context
 
-object BlurAmountData {
-    val blurAmount = listOf(
-        BlurAmount(
-            blurAmountRes = R.string.blur_lv_1,
-            blurAmount = 1
-        ),
-        BlurAmount(
-            blurAmountRes = R.string.blur_lv_2,
-            blurAmount = 2
-        ),
-        BlurAmount(
-            blurAmountRes = R.string.blur_lv_3,
-            blurAmount = 3
-        )
-    )
+interface AppContainer {
+    val waterRepository : WaterRepository
+}
+
+class DefaultAppContainer(context: Context) : AppContainer {
+    override val waterRepository = WorkManagerWaterRepository(context)
 }
