@@ -3,6 +3,7 @@ package com.google.codelabs.mdc.kotlin.shrine
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
 import com.android.volley.toolbox.NetworkImageView
 
 class ProductCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -11,4 +12,3 @@ class ProductCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     var productTitle: TextView = itemView.findViewById(R.id.product_title)
     var productPrice: TextView = itemView.findViewById(R.id.product_price)
 }
-
